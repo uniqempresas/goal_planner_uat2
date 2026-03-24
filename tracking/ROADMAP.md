@@ -4,6 +4,8 @@
 
 **Goal Planner** é uma aplicação pessoal de planejamento estratégico baseada no método "A Única Coisa" de Gary Keller. O aplicativo ajuda usuários a definirem e alcançarem suas metas através de uma estrutura hierárquica rigorosa (G → A → M → S → D), time blocking para produtividade diária, e sistemas de revisão periódica.
 
+**Abordagem:** Primeiro todo o frontend com dados mockados, depois integração com Supabase.
+
 **Objetivo Principal:** Criar uma aplicação web completa que permita aos usuários organizar suas vidas em áreas, definir metas hierárquicas, priorizar atividades diárias (ONE Thing), visualizar conexões entre metas (Domino Effect), e acompanhar seu progresso através de dashboards e gamificação.
 
 **Público-Alvo:** Profissionais, estudantes e qualquer pessoa que busca produtividade pessoal através de planejamento estratégico estruturado.
@@ -11,10 +13,11 @@
 **Stack Tecnológico:**
 - Frontend: React 19 + TypeScript + Vite
 - Styling: Tailwind CSS + shadcn/ui
-- Backend: Supabase (Auth, DB, Storage)
-- Database: PostgreSQL
+- Backend: Supabase (Auth, DB, Storage) - será integrado no final
+- Database: PostgreSQL (via Supabase)
 - Hosting: Vercel
 - Routing: React Router v7
+- Dados: Mockados inicialmente, Supabase depois
 
 ---
 
@@ -22,35 +25,33 @@
 
 | Milestone | Descrição | Sprint | Entrega Estimada |
 |-----------|-----------|--------|------------------|
-| M1: Setup | Configuração inicial do projeto, repositório, CI/CD | S1-S2 | Semana 2 |
-| M2: Autenticação | Sistema de login/cadastro com Supabase Auth | S3-S4 | Semana 4 |
-| M3: Core | Áreas de Vida e Metas Hierárquicas (G→A→M→S→D) | S5-S7 | Semana 7 |
-| M4: Execução | Agenda Diária com Time Blocking | S8-S9 | Semana 9 |
-| M5: Visualização | Dashboard com progresso visual | S9 | Semana 9 |
-| M6: Ampliação | Templates, Revisões Semanal/Mensal | S10-S11 | Semana 11 |
-| M7: Engajamento | Sistema de Conquistas (Gamificação) | S12 | Semana 12 |
-| M8: Personalização | Configurações, Temas, Notificações | S12 | Semana 12 |
-| M9: Qualidade | Testes, Segurança, Otimização | S13-S14 | Semana 14 |
-| M10: Launch | Deploy em Produção | S15 | Semana 15 |
+| M1: Setup | Configuração inicial do projeto | S1 | Semana 1 |
+| M2: Frontend Core | Autenticação, Layout base, Menu Mobile | S2-S3 | Semana 3 |
+| M3: Módulos Principal | Áreas, Metas, Agenda, Dashboard | S4-S9 | Semana 9 |
+| M4: Features Avançadas | Templates, Revisões, Conquistas | S10-S11 | Semana 11 |
+| M5: Configurações | Perfil, Temas, Preferências | S11 | Semana 11 |
+| M6: Integração | Supabase Backend | S12 | Semana 12 |
+| M7: Qualidade | Testes, Segurança, Otimização | S13-S14 | Semana 14 |
+| M8: Launch | Deploy em Produção | S15 | Semana 15 |
 
 ---
 
 ## Sprint 1: Setup do Projeto
 
-**Objetivo:** Configurar a estrutura base do projeto, incluindo repositório Git, tooling de desenvolvimento, e infraestrutura inicial.
+**Objetivo:** Configurar a estrutura base do projeto frontend, sem dependências de backend.
 
 ### Tasks
 
-- [ ] Configurar repositório Git com .gitignore e README.md
 - [ ] Inicializar projeto Vite com React 19 + TypeScript
 - [ ] Configurar ESLint e Prettier para código padronizado
 - [ ] Configurar Tailwind CSS com design system (cores, tipografia, radius)
 - [ ] Configurar shadcn/ui e instalar componentes base
 - [ ] Configurar React Router v7 com estrutura de rotas
-- [ ] Configurar Supabase SDK e variáveis de ambiente (.env.example)
+- [ ] Criar estrutura de pastas (components, pages, hooks, lib, types)
+- [ ] Configurar variáveis de ambiente (.env.example)
 - [ ] Configurar script de deploy para Vercel
 - [ ] Configurar GitHub Actions para CI/CD básico (lint + build)
-- [ ] Criar estrutura de pastas (components, pages, hooks, lib, types)
+- [ ] Criar layout base (Header, Sidebar, Main Content)
 
 ### Critérios de Aceite
 
@@ -59,7 +60,7 @@
 - [ ] Tailwind CSS configurado com design system definido
 - [ ] shadcn/ui instalado e funcionando
 - [ ] Rotas básicas configuradas (home, login, dashboard placeholder)
-- [ ] Supabase client configurado com Typescript
+- [ ] Estrutura de pastas criada
 
 ### Dependências
 
@@ -67,118 +68,87 @@
 
 ---
 
-## Sprint 2: Infraestrutura e Database
+## Sprint 2: Autenticação (Mockada)
 
-**Objetivo:** Configurar database PostgreSQL no Supabase, criar schema inicial, e preparar infraestrutura para desenvolvimento.
-
-### Tasks
-
-- [ ] Criar projeto Supabase e configurar PostgreSQL
-- [ ] Definir schema do banco (tabelas de usuários, áreas, metas)
-- [ ] Criar políticas RLS (Row Level Security) para proteção de dados
-- [ ] Configurar storage bucket para imagens/avatares
-- [ ] Criar migrations para schema inicial
-- [ ] Configurar tipos Typescript para schema do banco
-- [ ] Criar seeders para dados de exemplo (templates iniciais)
-- [ ] Configurar Supabase Auth com provedores (email/password, Google)
-- [ ] Criar script de rollback para migrations
-- [ ] Documentar schema do banco (README ou schema.md)
-
-### Critérios de Aceite
-
-- [ ] Todas as tabelas criadas no Supabase
-- [ ] Políticas RLS aplicadas e testadas
-- [ ] Tipos Typescript gerados e compilando
-- [ ] Dados de exemplo inseridos via seed
-- [ ] Autenticação via Supabase configurada
-
-### Dependências
-
-- [ ] Sprint 1 concluída
-
----
-
-## Sprint 3: Autenticação - Frontend
-
-**Objetivo:** Implementar interface de autenticação (login, registro, recuperação de senha) com Supabase Auth.
+**Objetivo:** Implementar interface de autenticação com dados mockados para desenvolvimento offline.
 
 ### Tasks
 
+- [ ] Criar contexto de Auth mockado (useAuth)
 - [ ] Criar página de Login com design system
 - [ ] Criar página de Registro com validação de campos
 - [ ] Criar página de Recuperação de Senha
-- [ ] Implementar integração com Supabase Auth (hooks customizados)
-- [ ] Criar componente de Toast para notificações de auth
 - [ ] Implementar proteção de rotas (Private Routes)
-- [ ] Criar contexto de Auth para gerenciamento de estado
 - [ ] Implementar logout com redirect para login
 - [ ] Adicionar validação de formulários (Zod + React Hook Form)
+- [ ] Criar componente de Toast para notificações
+- [ ] Criar dados mockados de usuário (faker ou JSON estático)
 - [ ] Criar página de perfil do usuário (após login)
 
 ### Critérios de Aceite
 
-- [ ] Usuário consegue criar conta
-- [ ] Usuário consegue fazer login
-- [ ] Usuário consegue recuperar senha
+- [ ] Usuário consegue criar conta (mock)
+- [ ] Usuário consegue fazer login (mock)
+- [ ] Usuário consegue recuperar senha (mock)
 - [ ] Rota protegida redireciona para login se não autenticado
-- [ ] State de autenticação persiste entre reloads
+- [ ] State de autenticação persiste entre reloads (localStorage)
 - [ ] Design responsivo e acessível
 
 ### Dependências
 
 - [ ] Sprint 1 concluída
-- [ ] Sprint 2 (schema de usuários)
 
 ---
 
-## Sprint 4: Autenticação - Backend & Core Setup
+## Sprint 3: Layout Base e Menu Mobile
 
-**Objetivo:** Finalizar configuração de autenticação no backend e preparar estrutura base para módulos principais.
+**Objetivo:** Finalizar layout responsivo com menu mobile inferior e estrutura de navegação.
 
 ### Tasks
 
-- [ ] Configurar triggers no Supabase para criação de perfil
-- [ ] Implementar validação de email no backend
-- [ ] Criar funções Edge para operações de autenticação
-- [ ] Configurar webhooks para eventos de auth
-- [ ] Implementar session management (refresh tokens)
-- [ ] Criar componente de Loading/Skeleton para transições
-- [ ] Implementar redirect após login bem-sucedido
-- [ ] Criar estrutura de Layout base (Header, Sidebar, Main Content)
+- [ ] Implementar Header com logo, busca, toggle tema, avatar
+- [ ] Implementar Sidebar desktop com navegação completa
 - [ ] Implementar Menu Mobile Inferior com 5 módulos
-- [ ] Criar tema escuro (Dark Mode) base
+- [ ] Implementar scroll horizontal no menu mobile (2 esquerda, 2 direita, centro)
+- [ ] Criar sub-menu "Mais" com Sheet (shadcn)
+- [ ] Implementar tema escuro (Dark Mode) base
+- [ ] Criar componente de Loading/Skeleton
+- [ ] Implementar transição entre páginas
+- [ ] Criar 404 Page e Error Boundary
+- [ ] Adicionar animações de transição (Framer Motion)
 
 ### Critérios de Aceite
 
-- [ ] Perfil criado automaticamente após registro
-- [ ] Sessão persiste adequadamente
 - [ ] Layout responsivo (desktop e mobile)
-- [ ] Menu inferior funcional em mobile
+- [ ] Menu inferior funcional com scroll horizontal
 - [ ] Dark Mode toggle funcionando
-- [ ] Redirects funcionando corretamente
+- [ ] Transições suaves entre páginas
+- [ ] 404 e error handling funcionando
 
 ### Dependências
 
-- [ ] Sprint 3 concluída
+- [ ] Sprint 2 concluída
 
 ---
 
-## Sprint 5: Áreas de Vida - CRUD Completo
+## Sprint 4: Áreas de Vida (CRUD Mockado)
 
-**Objetivo:** Implementar módulo de Áreas de Vida com CRUD completo, incluindo criação, edição, listagem e exclusão.
+**Objetivo:** Implementar módulo de Áreas de Vida com CRUD completo usando dados mockados.
 
 ### Tasks
 
+- [ ] Criar mock data para Áreas de Vida
+- [ ] Criar hook customizado useAreas (mock)
 - [ ] Criar página de listagem de Áreas de Vida
 - [ ] Criar componente de Card para cada Área
 - [ ] Implementar modal de criação de nova Área
 - [ ] Implementar modal de edição de Área
 - [ ] Implementar exclusão de Área com confirmação
 - [ ] Criar página de detalhes de uma Área
-- [ ] Implementar ordenação/priorização de Áreas (drag & drop)
+- [ ] Implementar ordenação de Áreas (drag & drop)
 - [ ] Adicionar cor personalizada para cada Área
-- [ ] Implementar ícones para Áreas (selection grid)
-- [ ] Criar estado vazio (empty state) para quando não há áreas
+- [ ] Implementar seleção de ícones para Áreas
+- [ ] Criar estado vazio (empty state)
 
 ### Critérios de Aceite
 
@@ -191,24 +161,24 @@
 
 ### Dependências
 
-- [ ] Sprint 4 concluída
-- [ ] Schema de Áreas no banco (Sprint 2)
+- [ ] Sprint 3 concluída
 
 ---
 
-## Sprint 6: Metas Hierárquicas - Estrutura G→A→M→S→D
+## Sprint 5: Metas Hierárquicas - Estrutura G→A→M→S→D
 
-**Objetivo:** Implementar a hierarquia completa de metas: Grand Goal → Annual → Monthly → Weekly → Daily.
+**Objetivo:** Implementar a hierarquia completa de metas com dados mockados.
 
 ### Tasks
 
-- [ ] Criar schema de Metas no banco (com self-referencing)
+- [ ] Criar mock data para Metas (todas hierarquias)
+- [ ] Criar hook customizado useMetas (mock)
 - [ ] Criar página de listagem de Metas por nível
-- [ ] Implementar criação de Grand Goal (nível 1)
-- [ ] Implementar criação de Metas Anuais (nível 2) vinculadas a GG
-- [ ] Implementar criação de Metas Mensais (nível 3) vinculadas a A
-- [ ] Implementar criação de Metas Semanais (nível 4) vinculadas a M
-- [ ] Implementar criação de Tarefas Diárias (nível 5) vinculadas a S
+- [ ] Implementar criação de Grand Goal (nível G)
+- [ ] Implementar criação de Metas Anuais (nível A) vinculadas a GG
+- [ ] Implementar criação de Metas Mensais (nível M) vinculadas a A
+- [ ] Implementar criação de Metas Semanais (nível S) vinculadas a M
+- [ ] Implementar criação de Tarefas Diárias (nível D) vinculadas a S
 - [ ] Criar visualização de hierarquia em árvore (tree view)
 - [ ] Implementar navegação entre níveis de meta
 - [ ] Criar breadcrumbs para navegação hierárquica
@@ -223,50 +193,50 @@
 
 ### Dependências
 
-- [ ] Sprint 5 concluída
-- [ ] Schema de Metas (Sprint 2)
+- [ ] Sprint 4 concluída
 
 ---
 
-## Sprint 7: Metas - Features Avançadas
+## Sprint 6: Metas - Features Avançadas
 
-**Objetivo:** Adicionar recursos avançados às metas: ONE Thing, SMART, prazo, progresso, e conexões.
+**Objetivo:** Adicionar recursos avançados às metas: ONE Thing, SMART, prazo, progresso.
 
 ### Tasks
 
 - [ ] Implementar seleção de ONE Thing por nível hierárquico
-- [ ] Adicionar campos SMART às metas (Smart, Measurable, Achievable, Relevant, Time-bound)
+- [ ] Adicionar campos SMART às metas
 - [ ] Implementar sistema de progresso automático (% completada)
 - [ ] Adicionar campo de prazo (due date) com validação
 - [ ] Implementar sistema de Domino Effect (metas conectadas)
 - [ ] Criar visualização de dependências entre metas
 - [ ] Implementar marcação de meta como concluída
-- [ ] Adicionar notas/descrição rica às metas (markdown)
+- [ ] Adicionar notas/descrição às metas (markdown)
 - [ ] Implementar busca e filtro de metas
 - [ ] Criar atalhos de teclado para navegação
 
 ### Critérios de Aceite
 
 - [ ] ONE Thing claramente visível em cada nível
-- [ ] Campos SMART editáveis e salvos
+- [ ] Campos SMART editáveis e salvos (mock)
 - [ ] Progresso calculado corretamente
 - [ ] Conexões entre metas visíveis (Domino Effect)
 - [ ] Busca e filtros funcionando
 
 ### Dependências
 
-- [ ] Sprint 6 concluída
+- [ ] Sprint 5 concluída
 
 ---
 
-## Sprint 8: Agenda Diária - Time Blocking
+## Sprint 7: Agenda Diária - Time Blocking
 
-**Objetivo:** Implementar sistema de agenda com time blocking (manhã/tarde/noite) vinculado às tarefas diárias.
+**Objetivo:** Implementar sistema de agenda com time blocking usando dados mockados.
 
 ### Tasks
 
-- [ ] Criar schema de Time Blocks no banco
-- [ ] Criar página de Agenda Diária
+- [ ] Criar mock data para Time Blocks
+- [ ] Criar hook customizado useAgenda (mock)
+- [ ] Criar página de Agenda Diária (Today View)
 - [ ] Implementar visualização de manhã (6h-12h)
 - [ ] Implementar visualização de tarde (12h-18h)
 - [ ] Implementar visualização de noite (18h-22h)
@@ -275,6 +245,7 @@
 - [ ] Criar listagem de tarefas disponíveis para agendar
 - [ ] Implementar edição e exclusão de Time Blocks
 - [ ] Adicionar indicador de prioridade visual nos blocks
+- [ ] Criar seção de Tarefas Atrasadas
 
 ### Critérios de Aceite
 
@@ -286,18 +257,44 @@
 
 ### Dependências
 
+- [ ] Sprint 6 concluída
+
+---
+
+## Sprint 8: Planejamento Semanal
+
+**Objetivo:** Implementar visualização e planejamento da semana completa.
+
+### Tasks
+
+- [ ] Criar página de Planejamento Semanal
+- [ ] Implementar visualização de 7 dias em grid
+- [ ] Criar arrasto de tarefas entre dias
+- [ ] Implementar visualização de ONE Thing semanal
+- [ ] Adicionar indicadores de produtividade por dia
+- [ ] Criar modo de edição em massa
+- [ ] Implementar resumo semanal (tarefas concluídas, pendentes)
+- [ ] Adicionar quick add de tarefas
+
+### Critérios de Aceite
+
+- [ ] Semana completa visível em uma tela
+- [ ] Arrastar tarefas entre dias funciona
+- [ ] ONE Thing semanal visível
+- [ ] Resumo semanal preciso
+
+### Dependências
+
 - [ ] Sprint 7 concluída
-- [ ] Schema de Time Blocks (Sprint 2)
 
 ---
 
 ## Sprint 9: Dashboard e Visualização de Progresso
 
-**Objetivo:** Criar dashboard principal com visualização de progresso, estatísticas e overview das atividades.
+**Objetivo:** Criar dashboard principal com visualização de progresso.
 
 ### Tasks
 
-- [ ] Criar schema de métricas no banco
 - [ ] Criar componente de widget de progresso geral
 - [ ] Implementar gráfico de progresso por Área de Vida
 - [ ] Implementar widget de ONE Thing do dia atual
@@ -307,6 +304,7 @@
 - [ ] Adicionar atalhos rápidos (quick actions)
 - [ ] Implementar filtros de período (dia, semana, mês)
 - [ ] Criar animação de transição no dashboard
+- [ ] Adicionar estatísticas de produtividade
 
 ### Critérios de Aceite
 
@@ -324,11 +322,12 @@
 
 ## Sprint 10: Templates de Metas
 
-**Objetivo:** Implementar sistema de templates para facilitar criação de metas com estruturas pré-definidas.
+**Objetivo:** Implementar sistema de templates para facilitar criação de metas.
 
 ### Tasks
 
-- [ ] Criar schema de Templates no banco
+- [ ] Criar mock data para Templates
+- [ ] Criar hook customizado useTemplates (mock)
 - [ ] Criar biblioteca de templates pré-definidos
 - [ ] Implementar página de listagem de templates
 - [ ] Criar modal de visualização de template
@@ -337,7 +336,6 @@
 - [ ] Criar categorias de templates (carreira, saúde, finanças, etc.)
 - [ ] Implementar busca de templates
 - [ ] Adicionar preview da estrutura do template
-- [ ] Criar opção de "usar novamente" em metas concluídas
 
 ### Critérios de Aceite
 
@@ -348,55 +346,54 @@
 
 ### Dependências
 
-- [ ] Sprint 7 concluída
-- [ ] Schema de Templates (Sprint 2)
+- [ ] Sprint 9 concluída
 
 ---
 
 ## Sprint 11: Revisões Semanal e Mensal
 
-**Objetivo:** Implementar sistema de revisões periódicas para planejamento e reflexão.
+**Objetivo:** Implementar sistema de revisões periódicas.
 
 ### Tasks
 
-- [ ] Criar schema de Revisões no banco
+- [ ] Criar mock data para Revisões
+- [ ] Criar hook customizado useRevisoes (mock)
 - [ ] Criar página de Revisão Semanal
-- - Implementar checklist de avaliação da semana
+- [ ] Implementar checklist de avaliação da semana
 - [ ] Criar template de perguntas para reflexão semanal
-- [ ] Implementar revisão de metas da semana (concluídas/pendentes)
+- [ ] Implementar revisão de metas da semana
 - [ ] Implementar planejamento da próxima semana
 - [ ] Criar página de Revisão Mensal
 - [ ] Criar template de perguntas para reflexão mensal
 - [ ] Implementar revisão de metas do mês
 - [ ] Implementar análise de progresso por Área
-- [ ] Criar geração automática de insights
 
 ### Critérios de Aceite
 
 - [ ] Revisão Semanal funcional e completa
 - [ ] Revisão Mensal funcional e completa
 - [ ] Dados de referência preenchidos automaticamente
-- [ ] Histórico de revisões preservado
-- [ ] Insights gerados corretamente
+- [ ] Histórico de revisões preservado (mock)
 
 ### Dependências
 
-- [ ] Sprint 9 concluída
+- [ ] Sprint 10 concluída
 
 ---
 
 ## Sprint 12: Conquistas e Configurações
 
-**Objetivo:** Implementar sistema de gamificação (conquistas) e configurações personalizadas.
+**Objetivo:** Implementar sistema de gamificação e configurações personalizadas.
 
 ### Tasks
 
 **Conquistas:**
-- [ ] Definir achievement types no banco
+- [ ] Criar mock data para Conquistas
+- [ ] Criar hook customizado useConquistas (mock)
 - [ ] Implementar sistema de pontos/XP
 - [ ] Criar lógica de desbloqueio de conquistas
 - [ ] Criar página de Galeria de Conquistas
-- [ ] Implementar badges por categoria (streak, completion, etc.)
+- [ ] Implementar badges por categoria
 - [ ] Adicionar notificação de conquista desbloqueada
 - [ ] Criar ranking pessoal (progress over time)
 
@@ -410,9 +407,9 @@
 - [ ] Criar página de preferências de idioma
 - [ ] Implementar delete de conta
 
-### Critérios deacrylate
+### Critérios de Aceite
 
-- [ ] Sistema de conquistas funcionando
+- [ ] Sistema de conquistas funcionando (mock)
 - [ ] Conquistas desbloqueiam corretamente
 - [ ] Galeria de conquistas visível
 - [ ] Configurações de perfil funcionando
@@ -425,21 +422,52 @@
 
 ---
 
-## Sprint 13: Testes e Qualidade
+## Sprint 13: Integração com Supabase
 
-**Objetivo:** Garantir qualidade do código através de testes unitários, integração e E2E.
+**Objetivo:** Integrar frontend com backend Supabase, substituindo dados mockados.
+
+### Tasks
+
+- [ ] Criar projeto Supabase e configurar PostgreSQL
+- [ ] Definir schema do banco (todas as tabelas)
+- [ ] Criar políticas RLS (Row Level Security)
+- [ ] Configurar storage bucket para imagens/avatares
+- [ ] Configurar Supabase SDK e variáveis de ambiente
+- [ ] Substituir useAuth mockado por Supabase Auth
+- [ ] Substituir todos os hooks mockados por chamadas Supabase
+- [ ] Implementar sincronização de dados em tempo real
+- [ ] Criar funções Edge para operações complexas
+- [ ] Configurar triggers para criação de dados automáticos
+
+### Critérios de Aceite
+
+- [ ] Todas as tabelas criadas no Supabase
+- [ ] Políticas RLS aplicadas e testadas
+- [ ] Autenticação funcionando com Supabase
+- [ ] Dados persistindo corretamente
+- [ ] Aplicação funcionando com dados reais
+
+### Dependências
+
+- [ ] Sprint 12 concluída
+
+---
+
+## Sprint 14: Testes e Qualidade
+
+**Objetivo:** Garantir qualidade do código através de testes.
 
 ### Tasks
 
 - [ ] Configurar Jest/Vitest para testes unitários
 - [ ] Criar testes unitários para hooks customizados
-- [ ] Criar testes unitários para utilitários (utils)
-- [ ] Criar testes para componentes principais (Button, Card, Input)
+- [ ] Criar testes unitários para utilitários
+- [ ] Criar testes para componentes principais
 - [ ] Configurar testes de integração com React Testing Library
 - [ ] Criar testes de integração para fluxo de autenticação
 - [ ] Criar testes de integração para CRUD de Áreas
 - [ ] Configurar testes E2E com Playwright
-- [ ] Criar teste E2E para jornada do usuário (criar meta até completar)
+- [ ] Criar teste E2E para jornada do usuário
 - [ ] Configurar coverage report (target: 70%)
 
 ### Critérios de Aceite
@@ -451,14 +479,13 @@
 
 ### Dependências
 
-- [ ] Sprint 12 concluída
-- [ ] Feature flags configurados se necessário
+- [ ] Sprint 13 concluída
 
 ---
 
-## Sprint 14: Segurança e Otimização
+## Sprint 15: Segurança e Otimização
 
-**Objetivo:** Fortalecer segurança da aplicação e otimizar performance.
+**Objetivo:** Fortalecer segurança e otimizar performance.
 
 ### Tasks
 
@@ -470,14 +497,12 @@
 - [ ] Revisar e fortalecer políticas RLS do Supabase
 - [ ] Adicionar sanitização de inputs
 - [ ] Implementar logging de segurança
-- [ ] Realizar penetration test básico
 
 **Otimização:**
 - [ ] Analisar bundle size e otimizar (code splitting)
 - [ ] Implementar lazy loading de rotas
-- [ ] Otimizar imagens (next/image ou similar)
+- [ ] Otimizar imagens
 - [ ] Implementar cache de dados (React Query)
-- [ ] Adicionar prefetching de dados
 - [ ] Monitorar Core Web Vitals
 - [ ] Implementar critical CSS inline
 
@@ -490,13 +515,13 @@
 
 ### Dependências
 
-- [ ] Sprint 13 concluída
+- [ ] Sprint 14 concluída
 
 ---
 
-## Sprint 15: Launch e Deploy
+## Sprint 16: Launch e Deploy
 
-**Objetivo:** Preparar e executar deploy em produção, configurações finais de monitoramento.
+**Objetivo:** Preparar e executar deploy em produção.
 
 ### Tasks
 
@@ -511,7 +536,7 @@
 - [ ] Criar documentação técnica (README.md)
 - [ ] Executar teste de carga básico
 - [ ] Executar smoke tests em produção
-- [ ] Preparar comunicação de launch (release notes)
+- [ ] Preparar comunicação de launch
 
 ### Critérios de Aceite
 
@@ -523,37 +548,38 @@
 
 ### Dependências
 
-- [ ] Sprint 14 concluída
-- [ ] Todos os testes passando
+- [ ] Sprint 15 concluída
 
 ---
 
 ## Resumo de Sprints
 
-| Sprint | Nome | Focus Principal | Duração Estimada |
-|--------|------|-----------------|------------------|
-| S1 | Setup do Projeto | Infraestrutura inicial | 1 semana |
-| S2 | Infraestrutura e Database | Database e Supabase | 1 semana |
-| S3 | Autenticação - Frontend | UI de auth | 1 semana |
-| S4 | Autenticação - Backend & Core | Auth + Layout base | 1 semana |
-| S5 | Áreas de Vida - CRUD | Módulo 1 completo | 1 semana |
-| S6 | Metas Hierárquicas | Estrutura G→A→M→S→D | 1 semana |
-| S7 | Metas - Features Avançadas | ONE Thing, SMART, Domino | 1 semana |
-| S8 | Agenda Diária - Time Blocking | Módulo 3 completo | 1 semana |
-| S9 | Dashboard | Visualização de progresso | 1 semana |
-| S10 | Templates | Biblioteca de templates | 1 semana |
-| S11 | Revisões | Semanal e Mensal | 1 semana |
-| S12 | Conquistas e Configurações | Gamificação + Settings | 1 semana |
-| S13 | Testes | Unit, Integração, E2E | 1 semana |
-| S14 | Segurança e Otimização | Performance e hardening | 1 semana |
-| S15 | Launch | Deploy final | 1 semana |
+| Sprint | Nome | Foco Principal | Tipo |
+|--------|------|-----------------|------|
+| S1 | Setup do Projeto | Infraestrutura frontend | Setup |
+| S2 | Autenticação Mockada | Login, Registro, Auth | Frontend |
+| S3 | Layout e Menu Mobile | Header, Sidebar, Mobile Nav | Frontend |
+| S4 | Áreas de Vida | CRUD completo | Frontend |
+| S5 | Metas Hierárquicas | Estrutura G→A→M→S→D | Frontend |
+| S6 | Metas Avançadas | ONE Thing, SMART, Domino | Frontend |
+| S7 | Agenda Diária | Time Blocking | Frontend |
+| S8 | Planejamento Semanal | Semana completa | Frontend |
+| S9 | Dashboard | Progresso visual | Frontend |
+| S10 | Templates | Biblioteca de templates | Frontend |
+| S11 | Revisões | Semanal e Mensal | Frontend |
+| S12 | Conquistas + Config | Gamificação + Settings | Frontend |
+| S13 | Integração Supabase | Backend real | Backend |
+| S14 | Testes | Unit, Integração, E2E | Qualidade |
+| S15 | Segurança + Otimização | Performance e hardening | Qualidade |
+| S16 | Launch | Deploy final | Launch |
 
-**Total Estimado:** 15 semanas
+**Total Estimado:** 16 semanas
 
 ---
 
 ## Notas Adicionais
 
+- **Dados Mockados:** Todas as sprints de frontend (S1-S12) usam dados mockados, permitindo desenvolvimento offline e rápido.
 - **Feedback Contínuo:** Ao final de cada sprint, revisar progresso com stakeholders e ajustar roadmap se necessário.
 - **Feature Flags:** Para funcionalidades de risco, usar feature flags e ativar gradualmente.
 - **Rollback:** Manter capacidade de rollback para cada deploy.
