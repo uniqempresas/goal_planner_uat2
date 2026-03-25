@@ -75,25 +75,25 @@
 
 ### Tasks
 
-- [ ] Criar contexto de Auth mockado (useAuth)
-- [ ] Criar página de Login com design system
-- [ ] Criar página de Registro com validação de campos
+- [x] Criar contexto de Auth mockado (useAuth)
+- [x] Criar página de Login com design system
+- [x] Criar página de Registro com validação de campos
 - [ ] Criar página de Recuperação de Senha
 - [ ] Implementar proteção de rotas (Private Routes)
-- [ ] Implementar logout com redirect para login
-- [ ] Adicionar validação de formulários (Zod + React Hook Form)
-- [ ] Criar componente de Toast para notificações
-- [ ] Criar dados mockados de usuário (faker ou JSON estático)
+- [x] Implementar logout com redirect para login
+- [x] Adicionar validação de formulários (Zod + React Hook Form)
+- [x] Criar componente de Toast para notificações (sonner)
+- [x] Criar dados mockados de usuário (faker ou JSON estático)
 - [ ] Criar página de perfil do usuário (após login)
 
 ### Critérios de Aceite
 
-- [ ] Usuário consegue criar conta (mock)
-- [ ] Usuário consegue fazer login (mock)
+- [x] Usuário consegue criar conta (mock)
+- [x] Usuário consegue fazer login (mock)
 - [ ] Usuário consegue recuperar senha (mock)
 - [ ] Rota protegida redireciona para login se não autenticado
-- [ ] State de autenticação persiste entre reloads (localStorage)
-- [ ] Design responsivo e acessível
+- [x] State de autenticação persiste entre reloads (localStorage)
+- [x] Design responsivo e acessível
 
 ### Dependências
 

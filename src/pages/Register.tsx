@@ -15,33 +15,40 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-const loginSchema = z.object({
-  email: z.string().email('Email inválido'),
-  password: z.string().min(6, 'Senha deve ter pelo menos 6 caracteres'),
-});
+const registerSchema = z
+  .object({
+    name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
+    email: z.string().email('Email inválido'),
+    password: z.string().min(6, 'Senha deve ter pelo menos 6 caracteres'),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Senhas não coincidem',
+    path: ['confirmPassword'],
+  });
 
-type LoginForm = z.infer<typeof loginSchema>;
+type RegisterForm = z.infer<typeof registerSchema>;
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
-  const { login, isLoading } = useAuth();
+  const { register: registerUser, isLoading } = useAuth();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>({
-    resolver: zodResolver(loginSchema),
+  } = useForm<RegisterForm>({
+    resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = async (data: LoginForm) => {
-    const success = await login(data.email, data.password);
+  const onSubmit = async (data: RegisterForm) => {
+    const success = await registerUser(data.name, data.email, data.password);
 
     if (success) {
-      toast.success('Login realizado com sucesso!');
+      toast.success('Conta criada com sucesso!');
       navigate('/dashboard');
     } else {
-      toast.error('Email ou senha inválidos');
+      toast.error('Erro ao criar conta. Tente novamente.');
     }
   };
 
@@ -50,12 +57,24 @@ export default function Login() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center space-y-2">
           <CardTitle className="text-2xl font-bold text-primary-600">
-            Goal Planner
+            Criar Conta
           </CardTitle>
-          <CardDescription>Materialize sua estratégia de vida</CardDescription>
+          <CardDescription>Junte-se ao Goal Planner</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Nome</Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="Seu nome completo"
+                {...register('name')}
+              />
+              {errors.name && (
+                <p className="text-sm text-red-500">{errors.name.message}</p>
+              )}
+            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -82,24 +101,30 @@ export default function Login() {
                 </p>
               )}
             </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirmar Senha</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                placeholder="••••••••"
+                {...register('confirmPassword')}
+              />
+              {errors.confirmPassword && (
+                <p className="text-sm text-red-500">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
+            </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Entrando...' : 'Entrar'}
+              {isLoading ? 'Criando conta...' : 'Criar Conta'}
             </Button>
             <div className="text-center text-sm text-neutral-600 dark:text-neutral-400">
+              Já tem conta?{' '}
               <Link
-                to="/recover-password"
+                to="/login"
                 className="hover:underline text-primary-600 dark:text-primary-400"
               >
-                Esqueceu a senha?
-              </Link>
-            </div>
-            <div className="text-center text-sm text-neutral-600 dark:text-neutral-400">
-              Não tem conta?{' '}
-              <Link
-                to="/register"
-                className="hover:underline text-primary-600 dark:text-primary-400"
-              >
-                Criar conta
+                Entrar
               </Link>
             </div>
           </form>
