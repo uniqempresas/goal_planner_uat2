@@ -1,6 +1,6 @@
 {
   "name": "goal-planner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Aplicação de planejamento estratégico baseada no método A Única Coisa",
   "type": "module",
   "scripts": {
