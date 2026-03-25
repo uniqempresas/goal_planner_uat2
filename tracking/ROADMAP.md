@@ -11,6 +11,7 @@
 **Público-Alvo:** Profissionais, estudantes e qualquer pessoa que busca produtividade pessoal através de planejamento estratégico estruturado.
 
 **Stack Tecnológico:**
+
 - Frontend: React 19 + TypeScript + Vite
 - Styling: Tailwind CSS + shadcn/ui
 - Backend: Supabase (Auth, DB, Storage) - será integrado no final
@@ -23,16 +24,16 @@
 
 ## Milestones
 
-| Milestone | Descrição | Sprint | Entrega Estimada |
-|-----------|-----------|--------|------------------|
-| M1: Setup | Configuração inicial do projeto | S1 | Semana 1 |
-| M2: Frontend Core | Autenticação, Layout base, Menu Mobile | S2-S3 | Semana 3 |
-| M3: Módulos Principal | Áreas, Metas, Agenda, Dashboard | S4-S9 | Semana 9 |
-| M4: Features Avançadas | Templates, Revisões, Conquistas | S10-S11 | Semana 11 |
-| M5: Configurações | Perfil, Temas, Preferências | S11 | Semana 11 |
-| M6: Integração | Supabase Backend | S12 | Semana 12 |
-| M7: Qualidade | Testes, Segurança, Otimização | S13-S14 | Semana 14 |
-| M8: Launch | Deploy em Produção | S15 | Semana 15 |
+| Milestone              | Descrição                              | Sprint  | Entrega Estimada |
+| ---------------------- | -------------------------------------- | ------- | ---------------- |
+| M1: Setup              | Configuração inicial do projeto        | S1      | Semana 1         |
+| M2: Frontend Core      | Autenticação, Layout base, Menu Mobile | S2-S3   | Semana 3         |
+| M3: Módulos Principal  | Áreas, Metas, Agenda, Dashboard        | S4-S9   | Semana 9         |
+| M4: Features Avançadas | Templates, Revisões, Conquistas        | S10-S11 | Semana 11        |
+| M5: Configurações      | Perfil, Temas, Preferências            | S11     | Semana 11        |
+| M6: Integração         | Supabase Backend                       | S12     | Semana 12        |
+| M7: Qualidade          | Testes, Segurança, Otimização          | S13-S14 | Semana 14        |
+| M8: Launch             | Deploy em Produção                     | S15     | Semana 15        |
 
 ---
 
@@ -42,25 +43,25 @@
 
 ### Tasks
 
-- [ ] Inicializar projeto Vite com React 19 + TypeScript
-- [ ] Configurar ESLint e Prettier para código padronizado
-- [ ] Configurar Tailwind CSS com design system (cores, tipografia, radius)
-- [ ] Configurar shadcn/ui e instalar componentes base
-- [ ] Configurar React Router v7 com estrutura de rotas
-- [ ] Criar estrutura de pastas (components, pages, hooks, lib, types)
-- [ ] Configurar variáveis de ambiente (.env.example)
+- [x] Inicializar projeto Vite com React 19 + TypeScript
+- [x] Configurar ESLint e Prettier para código padronizado
+- [x] Configurar Tailwind CSS com design system (cores, tipografia, radius)
+- [x] Configurar shadcn/ui e instalar componentes base
+- [x] Configurar React Router v7 com estrutura de rotas
+- [x] Criar estrutura de pastas (components, pages, hooks, lib, types)
+- [x] Configurar variáveis de ambiente (.env.example)
 - [ ] Configurar script de deploy para Vercel
-- [ ] Configurar GitHub Actions para CI/CD básico (lint + build)
-- [ ] Criar layout base (Header, Sidebar, Main Content)
+- [x] Configurar GitHub Actions para CI/CD básico (lint + build)
+- [x] Criar layout base (Header, Sidebar, Main Content)
 
 ### Critérios de Aceite
 
-- [ ] Projeto compila sem erros com `npm run build`
-- [ ] Servidor de desenvolvimento inicia com `npm run dev`
-- [ ] Tailwind CSS configurado com design system definido
-- [ ] shadcn/ui instalado e funcionando
-- [ ] Rotas básicas configuradas (home, login, dashboard placeholder)
-- [ ] Estrutura de pastas criada
+- [x] Projeto compila sem erros com `npm run build`
+- [x] Servidor de desenvolvimento inicia com `npm run dev`
+- [x] Tailwind CSS configurado com design system definido
+- [x] shadcn/ui instalado e funcionando
+- [x] Rotas básicas configuradas (home, login, dashboard placeholder)
+- [x] Estrutura de pastas criada
 
 ### Dependências
 
@@ -388,6 +389,7 @@
 ### Tasks
 
 **Conquistas:**
+
 - [ ] Criar mock data para Conquistas
 - [ ] Criar hook customizado useConquistas (mock)
 - [ ] Implementar sistema de pontos/XP
@@ -398,6 +400,7 @@
 - [ ] Criar ranking pessoal (progress over time)
 
 **Configurações:**
+
 - [ ] Criar página de Configurações
 - [ ] Implementar edição de perfil (nome, avatar, bio)
 - [ ] Implementar seleção de tema (cores customizáveis)
@@ -490,6 +493,7 @@
 ### Tasks
 
 **Segurança:**
+
 - [ ] Auditar e corrigir vulnerabilidades (npm audit)
 - [ ] Implementar headers de segurança (CSP, X-Frame-Options)
 - [ ] Adicionar proteção CSRF
@@ -499,6 +503,7 @@
 - [ ] Implementar logging de segurança
 
 **Otimização:**
+
 - [ ] Analisar bundle size e otimizar (code splitting)
 - [ ] Implementar lazy loading de rotas
 - [ ] Otimizar imagens
@@ -554,24 +559,24 @@
 
 ## Resumo de Sprints
 
-| Sprint | Nome | Foco Principal | Tipo |
-|--------|------|-----------------|------|
-| S1 | Setup do Projeto | Infraestrutura frontend | Setup |
-| S2 | Autenticação Mockada | Login, Registro, Auth | Frontend |
-| S3 | Layout e Menu Mobile | Header, Sidebar, Mobile Nav | Frontend |
-| S4 | Áreas de Vida | CRUD completo | Frontend |
-| S5 | Metas Hierárquicas | Estrutura G→A→M→S→D | Frontend |
-| S6 | Metas Avançadas | ONE Thing, SMART, Domino | Frontend |
-| S7 | Agenda Diária | Time Blocking | Frontend |
-| S8 | Planejamento Semanal | Semana completa | Frontend |
-| S9 | Dashboard | Progresso visual | Frontend |
-| S10 | Templates | Biblioteca de templates | Frontend |
-| S11 | Revisões | Semanal e Mensal | Frontend |
-| S12 | Conquistas + Config | Gamificação + Settings | Frontend |
-| S13 | Integração Supabase | Backend real | Backend |
-| S14 | Testes | Unit, Integração, E2E | Qualidade |
-| S15 | Segurança + Otimização | Performance e hardening | Qualidade |
-| S16 | Launch | Deploy final | Launch |
+| Sprint | Nome                   | Foco Principal              | Tipo      |
+| ------ | ---------------------- | --------------------------- | --------- |
+| S1     | Setup do Projeto       | Infraestrutura frontend     | Setup     |
+| S2     | Autenticação Mockada   | Login, Registro, Auth       | Frontend  |
+| S3     | Layout e Menu Mobile   | Header, Sidebar, Mobile Nav | Frontend  |
+| S4     | Áreas de Vida          | CRUD completo               | Frontend  |
+| S5     | Metas Hierárquicas     | Estrutura G→A→M→S→D         | Frontend  |
+| S6     | Metas Avançadas        | ONE Thing, SMART, Domino    | Frontend  |
+| S7     | Agenda Diária          | Time Blocking               | Frontend  |
+| S8     | Planejamento Semanal   | Semana completa             | Frontend  |
+| S9     | Dashboard              | Progresso visual            | Frontend  |
+| S10    | Templates              | Biblioteca de templates     | Frontend  |
+| S11    | Revisões               | Semanal e Mensal            | Frontend  |
+| S12    | Conquistas + Config    | Gamificação + Settings      | Frontend  |
+| S13    | Integração Supabase    | Backend real                | Backend   |
+| S14    | Testes                 | Unit, Integração, E2E       | Qualidade |
+| S15    | Segurança + Otimização | Performance e hardening     | Qualidade |
+| S16    | Launch                 | Deploy final                | Launch    |
 
 **Total Estimado:** 16 semanas
 

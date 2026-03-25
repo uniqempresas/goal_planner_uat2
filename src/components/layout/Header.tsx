@@ -98,4 +98,34 @@ export default function Header({ onMenuClick }: HeaderProps) {
                   </div>
                   <div className="h-px bg-border my-1" />
                   <button
-                    className="relative flex cursor-default items-center gap-1.5 rou
+                    className="relative flex cursor-default items-center gap-1.5 rounded-md w-full px-2 py-1.5 text-sm outline-hidden select-none hover:bg-accent"
+                    onClick={() => {}}
+                  >
+                    <User className="h-4 w-4 mr-2" />
+                    Perfil
+                  </button>
+                  <Link
+                    to="/settings"
+                    className="relative flex cursor-default items-center gap-1.5 rounded-md w-full px-2 py-1.5 text-sm outline-hidden select-none hover:bg-accent"
+                    onClick={() => setShowUserMenu(false)}
+                  >
+                    <Settings className="h-4 w-4 mr-2" />
+                    Configurações
+                  </Link>
+                  <div className="h-px bg-border my-1" />
+                  <button
+                    className="relative flex cursor-default items-center gap-1.5 rounded-md w-full px-2 py-1.5 text-sm outline-hidden select-none hover:bg-accent text-error-600"
+                    onClick={() => {}}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sair
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
